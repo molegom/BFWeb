@@ -1,4 +1,6 @@
-﻿$(window).load(function () {
+﻿$(document).ready(function () {
+    $(".Main-Field").on("contextmenu", false);
+    
     $("td").dblclick(function () {
         $(this).css("background-color", "#00FF00");
 
