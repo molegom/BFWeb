@@ -5,20 +5,23 @@
 }
 
 <h2>Field Battle</h2>
-<table class ="Main-Field">
-    <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>6</td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>4</td>
-        <td>5</td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>8</td>
-        <td>9</td>
-    </tr>
+<table class="Main-Field">
+    @if (Model != null)
+    {
+        for (int i = 0; i < Model.SizeX; i++)
+        {
+            <tr>
+                @for (int j = 0; j < Model.SizeY; j++)
+                {
+                    int value = ((Model.SizeX)*i + j + 1);
+                    string idName = "cell_" + (i + 1) + "_" + (j + 1);
+                    <td>
+                        <div id ="@idName" style ="background-color: @Model.colors[value]">
+                            @value.ToString()
+                        </div>
+                    </td>
+                }
+            </tr>
+        }
+    }
 </table>

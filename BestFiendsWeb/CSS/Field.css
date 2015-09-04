@@ -1,19 +1,27 @@
 ﻿table.Main-Field {
     margin-left: auto;
     margin-right: auto;
+    cursor: default;
+}
+
+body {
     -moz-user-select: -moz-none;
     -o-user-select: none;
     -khtml-user-select: none;
-    -webkit-user-select: none;
+    -webkit-user-select: none;    
+    -ms-user-select: none;
     user-select: none;
 }
 
 .Main-Field td {
     text-align: center;
     width: 50px;
-    height: 50px;
+    height: 50px;   
 }
 
-.Main-Field td:hover {
-    background-color: #ffe4b5;
+td div {
+    margin: 5px;
+    padding: 5px;
+    height: 40px;
+    width: 40px;
 }

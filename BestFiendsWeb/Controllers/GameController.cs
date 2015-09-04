@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using BestFiendsWeb.Models;
 
 namespace BestFiendsWeb.Controllers
 {
@@ -17,7 +19,8 @@ namespace BestFiendsWeb.Controllers
 
         public ActionResult Field()
         {
-            return View();
+            Field f = new Field(6, 6);
+            return View(f);
         }
 	}
 }
