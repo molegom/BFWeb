@@ -1,19 +1,11 @@
 ﻿$(document).ready(function () {
+    var listPressedCell = [];
+
+    var leftButtonDown = false;
+
+    InitCells();
+
     $(".Main-Field").on("contextmenu", false);
-       
-    //$('td').mouseover(function () {
-    //    $(this).css("background-color", "#00FFFF");
-    //});
-
-    //$('td').mouseleave(function () {
-    //    $(this).css("background-color", "#FFFFFF");
-    //});
-
-    //$("td").click(function () {
-    //    $(this).css("background-color", "#FF0000");
-    //});   
-
-    var leftButtonDown = false;    
 
     $('td div').mousedown(function (e) {        
         // Left mouse button was pressed, set flag
@@ -21,11 +13,26 @@
 
         $(this).css("background-color", "#FF0000");
     });
-    $('td div').mouseup(function (e) {
+
+    $("BODY").mouseup(function (e) {
         // Left mouse button was released, clear flag
         if (e.which === 1) leftButtonDown = false;
 
-       // $(this).css("background-color", "#FFFFFF");
+        listPressedCell.forEach(function (item, i, listPressedCell) {
+            $("#" + item).css("background-color", "#FFFFFF");
+        });
+
+        //listPressedCell.clear();
+    });
+   
+    $('td div').mousemove(function (e) {
+        tweakMouseMoveEvent(e);
+        if (leftButtonDown) {
+            $(this).css("background-color", "#FFFF00");
+            if (!listPressedCell.contains($(this).attr("ID"))) {
+                listPressedCell.push($(this).attr("ID"));
+            }
+        }
     });
 
     function tweakMouseMoveEvent(e) {
@@ -39,17 +46,17 @@
         // This indicates no buttons pressed
         if (e.which === 1 && !leftButtonDown) e.which = 0;
     }
-   
-    $('td div').mousemove(function (e) {
-        tweakMouseMoveEvent(e);
-        if (leftButtonDown) {
-            $(this).css("background-color", "#FF0000");
-        } else {
-           // $(this).css("background-color", "#FFFFFF");
-        }
-    });
-
 });
+
+Array.prototype.contains = function(obj) {
+    var i = this.length;
+    while (i--) {
+        if (this[i] === obj) {
+            return true;
+        }
+    }
+    return false;
+}
 
 function getInternetExplorerVersion() {
     var rv = -1; // Return value assumes failure.
@@ -62,4 +69,15 @@ function getInternetExplorerVersion() {
     }
 
     return rv;
+}
+
+function InitCells() {
+
+    $("'td div'").each(function() {
+        var strIdList = $(this).attr("ID").split("_");
+        if (.length > 2) {
+            var strX  = 
+        }
+    });
+    var c = new Cell()
 }
